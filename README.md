@@ -31,7 +31,7 @@ provider "helm" {
   debug           = true
   service_account = "${module.tiller.service_account}"
   namespace       = "${module.tiller.namespace}"
-  install_tiller   = false
+  install_tiller  = false
 
   kubernetes {
     ...
