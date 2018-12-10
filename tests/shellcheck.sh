@@ -21,6 +21,6 @@ done
 echo
 
 docker run -ti -v "$(pwd):$(pwd)" -w "$(pwd)" \
-  koalaman/shellcheck-alpine:v0.4.6 -x "${CHECK[@]}"
+  koalaman/shellcheck-alpine:v0.6.0 shellcheck -x "${CHECK[@]}"
 
 # vim: tabstop=2 shiftwidth=2 expandtab
