@@ -13,10 +13,8 @@ resource "kubernetes_deployment" "tiller_deploy" {
     replicas = 1
 
     selector {
-      match_labels {
-        name = "tiller"
-        app  = "helm"
-      }
+      name = "tiller"
+      app  = "helm"
     }
 
     template {
