@@ -24,11 +24,11 @@ module "tiller" {
 
   namespace       = "kube-system"
   service_account = "tiller"
-  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.9.0"
+  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.11.0"
 }
 
 provider "helm" {
-  version = "~> 0.6.2"
+  version = "~> 0.7.0"
 
   debug           = true
   service_account = "${module.tiller.service_account}"
