@@ -29,7 +29,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
 
       spec {
         container {
-          image             = "gcr.io/kubernetes-helm/tiller:v2.9.0"
+          image             = "${var.tiller_image}"
           name              = "tiller"
           image_pull_policy = "IfNotPresent"
           command           = ["/tiller"]
