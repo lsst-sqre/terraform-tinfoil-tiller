@@ -93,7 +93,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
           }
         }
 
-        service_account_name = "${var.service_account}"
+        service_account_name = "${kubernetes_service_account.tiller.metadata.0.name}"
       } # spec
     } # template
   } # spec
@@ -135,13 +135,13 @@ resource "kubernetes_service_account" "tiller" {
 
 resource "kubernetes_cluster_role_binding" "tiller" {
   metadata {
-    name = "${var.service_account}"
+    name = "${kubernetes_service_account.tiller.metadata.0.name}"
   }
 
   subject {
     kind      = "ServiceAccount"
-    name      = "${var.service_account}"
-    namespace = "${var.namespace}"
+    name      = "${kubernetes_service_account.tiller.metadata.0.name}"
+    namespace = "${kubernetes_service_account.tiller.metadata.0.namespace}"
     api_group = ""
   }
 
