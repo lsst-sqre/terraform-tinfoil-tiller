@@ -44,8 +44,41 @@ provider "helm" {
 }
 ```
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| namespace | kubernetes namespace to deploy into | string | `"kube-system"` | no |
+| service\_account | kubernetes service account name | string | `"tiller"` | no |
+| tiller\_image | tiller docker image. | string | `"gcr.io/kubernetes-helm/tiller:v2.11.0"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| namespace | kubernetes namespace in which tiller is installed |
+| service\_account | name of kubernetes service account for tiller |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+`pre-commit` hooks
+---
+
+```bash
+go get github.com/segmentio/terraform-docs
+pip install --user pre-commit
+pre-commit install
+
+# manual run
+pre-commit run -a
+```
+
 See Also
 ---
 
-* [`terraform`](https://www.terraform.io/)
 * [`helm`](https://docs.helm.sh/)
+* [`pre-commit`](https://github.com/pre-commit/pre-commit)
+* [`pre-commit-terraform`](https://github.com/antonbabenko/pre-commit-terraform)
+* [`terraform-docs`](https://github.com/segmentio/terraform-docs)
+* [`terraform`](https://www.terraform.io/)

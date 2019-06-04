@@ -4,7 +4,7 @@ set -e
 shopt -s globstar nullglob
 
 CHECK=( **/*.sh )
-IGNORE=( environments/** .bundle/** .tmp/** )
+IGNORE=( {environments,.bundle,.tmp}/** )
 
 for c in "${!CHECK[@]}"; do
   for i in "${IGNORE[@]}"; do
