@@ -1,4 +1,4 @@
-# a seperate "style" file must be used to pass "parameters" to a rule
+# a separate "style" file must be used to pass "parameters" to a rule
 #
 # https://github.com/markdownlint/markdownlint/blob/master/docs/configuration.md
 # https://github.com/markdownlint/markdownlint/blob/master/docs/RULES.md

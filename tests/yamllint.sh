@@ -3,12 +3,12 @@
 set -e
 shopt -s globstar nullglob
 
-CHECK=( **/*.yaml **/*.yaml.tpl **/*.yml **/*.eyaml .travis.yml )
+CHECK=( **/*.{yaml,yml,.eyaml} .*.{yml,yaml} )
 EYAML=( **/*.eyaml )
 IGNORE=()
 CONF_FILE=".yamllint.yaml"
 
-# filter out plaintext versions of .eyaml files
+# filter out plain text versions of .eyaml files
 for e in "${!EYAML[@]}"; do
   uneyaml=${EYAML[e]/eyaml/yaml}
   for c in "${!CHECK[@]}"; do
