@@ -19,18 +19,21 @@ Usage
 ---
 
 ```terraform
-module "tiller" {
-  source = "git::https://github.com/lsst-sqre/terraform-tinfoil-tiller.git//?ref=master"
+resource "kubernetes_namespace" "tiller" {
+  metadata {
+    name = "tiller"
+  }
+}
 
-  namespace       = "kube-system"
-  service_account = "tiller"
-  tiller_image    = "gcr.io/kubernetes-helm/tiller:v2.11.0"
+module "tiller" {
+  source = "git::https://github.com/lsst-sqre/terraform-tinfoil-tiller.git?ref=0.9.x"
+
+  namespace = "${kubernetes_namespace.tiller.metadata.0.name}"
 }
 
 provider "helm" {
-  version = "~> 0.7.0"
+  version = "~> 0.9.1"
 
-  debug           = true
   service_account = "${module.tiller.service_account}"
   namespace       = "${module.tiller.namespace}"
   install_tiller  = false
