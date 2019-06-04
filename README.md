@@ -57,8 +57,8 @@ provider "helm" {
 
 | Name | Description |
 |------|-------------|
-| namespace |  |
-| service\_account |  |
+| namespace | kubernetes namespace in which tiller is installed |
+| service\_account | name of kubernetes service account for tiller |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
