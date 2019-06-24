@@ -26,13 +26,13 @@ resource "kubernetes_namespace" "tiller" {
 }
 
 module "tiller" {
-  source = "git::https://github.com/lsst-sqre/terraform-tinfoil-tiller.git?ref=0.9.x"
+  source = "git::https://github.com/lsst-sqre/terraform-tinfoil-tiller.git?ref=0.10.x"
 
   namespace = "${kubernetes_namespace.tiller.metadata.0.name}"
 }
 
 provider "helm" {
-  version = "~> 0.9.1"
+  version = "~> 0.10.0"
 
   service_account = "${module.tiller.service_account}"
   namespace       = "${module.tiller.namespace}"
@@ -51,7 +51,7 @@ provider "helm" {
 |------|-------------|:----:|:-----:|:-----:|
 | namespace | kubernetes namespace to deploy into | string | `"kube-system"` | no |
 | service\_account | kubernetes service account name | string | `"tiller"` | no |
-| tiller\_image | tiller docker image. | string | `"gcr.io/kubernetes-helm/tiller:v2.11.0"` | no |
+| tiller\_image | tiller docker image. | string | `"gcr.io/kubernetes-helm/tiller:v2.14.0"` | no |
 
 ## Outputs
 
