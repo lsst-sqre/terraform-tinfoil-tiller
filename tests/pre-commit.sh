@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 docker run -v "$(pwd):$(pwd)" -w "$(pwd)" lsstsqre/terraform-pre-commit:latest \
-  pre-commit install && pre-commit run -a
+  pre-commit run -a
 
 # vim: tabstop=2 shiftwidth=2 expandtab

@@ -9,6 +9,7 @@ tf() {
     "hashicorp/terraform:${TF_VER}" "$@"
 }
 
+tf init
 tf fmt --check=true --diff=true
 tf validate
 
