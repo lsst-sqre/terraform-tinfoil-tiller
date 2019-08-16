@@ -1,5 +1,5 @@
 resource "kubernetes_deployment" "tiller_deploy" {
-  metadata { # metadata
+  metadata {
     name      = "tiller-deploy"
     namespace = var.namespace
 
@@ -9,7 +9,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
     }
   }
 
-  spec { # spec
+  spec {
     replicas = 1
 
     selector {
@@ -19,7 +19,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
       }
     }
 
-    template { # template
+    template {
       metadata {
         labels = {
           name = "tiller"
@@ -27,8 +27,8 @@ resource "kubernetes_deployment" "tiller_deploy" {
         }
       }
 
-      spec {        # spec
-        container { # container
+      spec {
+        container {
           image             = var.tiller_image
           name              = "tiller"
           image_pull_policy = "IfNotPresent"
@@ -107,7 +107,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
 #      name = "tiller"
 #      app  = "helm"
 #    }
-#  } # metadata
+#  }
 #
 #  spec {
 #    selector {
@@ -122,7 +122,7 @@ resource "kubernetes_deployment" "tiller_deploy" {
 #      port        = "44134"
 #      target_port = "tiller"
 #    }
-#  } # spec
+#  }
 #}
 
 resource "kubernetes_service_account" "tiller" {
