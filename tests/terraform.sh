@@ -2,14 +2,15 @@
 
 set -e
 
-TF_VER="0.11.14"
+TF_VER="0.12.6"
 
 tf() {
   docker run -ti -v "$(pwd):$(pwd)" -w "$(pwd)" \
     "hashicorp/terraform:${TF_VER}" "$@"
 }
 
+tf init
 tf fmt --check=true --diff=true
-tf validate --check-variables=false
+tf validate
 
 # vim: tabstop=2 shiftwidth=2 expandtab
